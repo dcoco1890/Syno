@@ -10,6 +10,7 @@ class Home extends React.Component{
         return(
             <div>
                 <h1>HI</h1>
+                <p>Click the about to find stuff</p>
             </div>
         )
     }
