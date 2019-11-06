@@ -13,6 +13,11 @@ class About extends React.Component{
     }
     handleClick = e => {
         e.preventDefault ();
+        console.log(this.state.word)
+        API.getSyn(this.state).then(resp => {
+            console.log(resp)
+        })
+        
     } 
 
     handleChange = event => {
@@ -22,7 +27,7 @@ class About extends React.Component{
         this.setState ({
           [name]: value,
         });
-        console.log (this.state);
+        
       };
     render(){
         return(
@@ -30,8 +35,12 @@ class About extends React.Component{
                 <h1>About</h1>
                 <div className='card'>
                     <form>
-                        <input type='text' />
-                <Button />
+                        <input 
+                        type='text'
+                        value={this.state.value}
+                        name='word'
+                        onChange={this.handleChange} />
+                <Button onClick={this.handleClick} />
                     </form>
                 </div>
             </div>
