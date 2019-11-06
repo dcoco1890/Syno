@@ -71,7 +71,9 @@ class Lookup extends React.Component{
                     <Button onClick={this.handleClick} />
                     </form>
                     <div className='container-fluid'>
+                        <div className='d-flex flex-column'>
                         {theSyns}
+                        </div>
                     </div>
                 </div>
             </div>
