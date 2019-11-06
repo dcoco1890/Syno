@@ -14,7 +14,7 @@ class About extends React.Component{
     handleClick = e => {
         e.preventDefault ();
         console.log(this.state.word)
-        API.getSyn(this.state).then(resp => {
+        API.getSyn(this.state.word).then(resp => {
             console.log(resp)
         })
         
