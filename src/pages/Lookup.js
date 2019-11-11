@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../comps/Button';
 import API from '../utils/API';
 import Word from '../comps/Word';
+import Stem from '../comps/Stem';
 
 class Lookup extends React.Component {
 
@@ -12,7 +13,8 @@ class Lookup extends React.Component {
             lookup: false,
             data: [],
             syns: [],
-            ants: []
+            ants: [], 
+            stems: []
         }
 
     }
@@ -32,7 +34,8 @@ class Lookup extends React.Component {
                 this.setState({
                     lookup: true,
                     data: resp.data,
-                    syns: resp.data[0].meta.syns[0]
+                    syns: resp.data[0].meta.syns[0],
+                    stems: resp.data[0].meta.stems
                 })
 
 
@@ -59,6 +62,9 @@ class Lookup extends React.Component {
         const theSyns = this.state.syns.map(item => {
             return <Word syn={true} word={item} key={item} />
         });
+        const theStems = this.state.stems.map(item => {
+            return <li>{item}</li>
+        })
 
         return (
             <div>
@@ -74,6 +80,7 @@ class Lookup extends React.Component {
                     </form>
                     <div className='container-fluid'>
                         <div className='d-flex flex-column'>
+                            {this.state.stems ? <Stem word={this.state.word}>{theStems}</Stem> : <div></div>}
                             {theSyns}
                         </div>
                     </div>
