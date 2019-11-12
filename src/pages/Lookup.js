@@ -68,15 +68,17 @@ class Lookup extends React.Component {
 
         return (
             <div>
-                <h1>Synonym Finder</h1>
                 <div className='card'>
                     <form>
+                        <label className='d-flex align-items-center justify-content-center'>
+                        <h1 className='pr-2'>Synonym Finder: </h1>
                         <input
                             type='text'
                             value={this.state.value}
                             name='word'
                             onChange={this.handleChange} />
                         <Button onClick={this.handleClick} />
+                        </label>
                     </form>
                     <div className='container-fluid'>
                         <div className='d-flex flex-column'>

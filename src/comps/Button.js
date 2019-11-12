@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Button = props => (
-    <button onClick={props.onClick}>
+    <button  
+       className='ml-2 btn btn-outline-primary'
+       onClick={props.onClick}>
         Submit
     </button>
 )

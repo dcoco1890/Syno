@@ -1,13 +1,15 @@
 import React from 'react';
-
 import {Link} from 'react-router-dom';
-// import About from '../comps/About';
 
 export default function Nav(){
     const styles = {
         ul: {
             display: 'flex',
-            justifyContent: 'space-around'
+            justifyContent: 'space-around',
+            listStyle: 'none',
+            boxShadow: '1px 1px 5px rgba(0,0,0,0.6)',
+            marginBottom: '2.5rem',
+            padding: '.5rem 0'
         }
     }
     return(

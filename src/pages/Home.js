@@ -7,7 +7,7 @@ class Home extends React.Component{
         return(
             <div>
                 <h1>HI</h1>
-                <p>Click Lookup to find stuff</p>
+                <p>Click Lookup to get started</p>
             </div>
         )
     }
