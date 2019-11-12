@@ -11,6 +11,8 @@ class Lookup extends React.Component {
         this.state = {
             word: '',
             lookup: false,
+            setWord: '',
+            def: '',
             data: [],
             syns: [],
             ants: [], 
@@ -35,7 +37,9 @@ class Lookup extends React.Component {
                     lookup: true,
                     data: resp.data,
                     syns: resp.data[0].meta.syns[0],
-                    stems: resp.data[0].meta.stems
+                    stems: resp.data[0].meta.stems,
+                    def: resp.data[0].shortdef[0],
+                    setWord: resp.data[0].hwi.hw
                 })
 
 
@@ -68,7 +72,7 @@ class Lookup extends React.Component {
 
         return (
             <div>
-                <div className='card'>
+                
                     <form>
                         <label className='d-flex align-items-center justify-content-center'>
                         <h1 className='pr-2'>Synonym Finder: </h1>
@@ -80,13 +84,13 @@ class Lookup extends React.Component {
                         <Button onClick={this.handleClick} />
                         </label>
                     </form>
-                    <div className='container-fluid'>
+                    <div className='container'>
+                            {this.state.stems ? <Stem word={this.state.setWord}>{theStems}</Stem> : <div></div>}
                         <div className='d-flex flex-column'>
-                            {this.state.stems ? <Stem word={this.state.word}>{theStems}</Stem> : <div></div>}
                             {theSyns}
                         </div>
                     </div>
-                </div>
+                
             </div>
         )
     }
