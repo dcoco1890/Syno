@@ -11,15 +11,12 @@ class Lookup extends React.Component {
         super(props);
         this.state = {
             word: '',
-            setWord: '',
             def: '',
             data: [],
-            syns: [],
-            ants: [], 
-            stems: []
+            ants: ['none found'], 
         }
-
     }
+
     handleClick = e => {
         e.preventDefault();
 
@@ -38,8 +35,8 @@ class Lookup extends React.Component {
                     syns: resp.data[0].meta.syns[0],
                     stems: resp.data[0].meta.stems,
                     def: resp.data[0].shortdef[0],
-                    setWord: resp.data[0].hwi.hw,
-                    ants: resp.data[0].meta.ants[0]
+                    
+                   
                 })
             }
         }).catch(err => {
@@ -59,34 +56,31 @@ class Lookup extends React.Component {
 
     render() {
       
-
         return (
             <div>
-                    <form>
-                        <label className='d-flex align-items-center justify-content-center'>
-                        <h1 className='pr-2'>Synonym Finder: </h1>
+                <form>
+                    <label className='d-flex align-items-center justify-content-center'>
+                    <h1 className='pr-2'>Synonym Finder: </h1>
                         <input
                             type='text'
                             value={this.state.value}
                             name='word'
                             onChange={this.handleChange} />
                         <Button onClick={this.handleClick} />
-                        </label>
-                    </form>
+                    </label>
+                </form>
                     <div className='container'>
-                        <TotalCard word={this.state.setWord}>
-                            {this.state.stems.length ? <Stem stems={this.state.stems} /> : <div></div>}
-                            {this.state.stems.length ? <SynAntList syns={this.state.syns} ants={this.state.ants} /> : <div></div>}
-                        </TotalCard>
+                        {this.state.data.map(item => (
+                            <TotalCard word={item.hwi.hw} >
+                                <Stem stems={item.meta.stems} />
+                                <SynAntList syns={item.meta.syns[0]} ants={item.meta.ants.length ? item.meta.ants : this.state.ants } />
+                            </TotalCard>
+                        ))}
                        
                     </div>
             </div>
         )
     }
-
-
-
-
 }
 
 export default Lookup;
