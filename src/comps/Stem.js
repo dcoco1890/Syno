@@ -1,19 +1,13 @@
 import React from 'react';
 
 const Stem = props => (
-    <div className='card'>
-        <div className='card-header'>
-            <h1>{props.word}</h1>
-        </div>
-        <div className='card-body'>
-            <div className='card-text'>
-                Also:
-                <ul>
-                    {props.children}
-                </ul>
-            </div>
-        </div>
-    </div>
+    <ul className="list-group">
+    {props.stems.map(item => (
+      <li className="list-group-item" key={item}>
+        {item}
+      </li>
+    ))}
+  </ul>
 );
 
 export default Stem;
