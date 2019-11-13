@@ -4,6 +4,7 @@ import API from '../utils/API';
 import Stem from '../comps/Stem';
 import TotalCard from '../comps/TotalCard';
 import SynAntList from '../comps/SynAntList';
+import logo from '../img/mwlogo.jpg'
 
 class Lookup extends React.Component {
 
@@ -68,12 +69,16 @@ class Lookup extends React.Component {
                             onChange={this.handleChange} />
                         <Button onClick={this.handleClick} />
                     </label>
+                    <div className='img-spot'>
+                        <p>Powered By:</p>
+                    <img src={logo} alt='merriam-webster-logo'/>
+                    </div>
                 </form>
                     <div className='container'>
                         {this.state.data.map(item => (
                             <TotalCard word={item.hwi.hw} >
                                 <Stem stems={item.meta.stems} />
-                                <SynAntList syns={item.meta.syns[0]} ants={item.meta.ants.length ? item.meta.ants : this.state.ants } />
+                                <SynAntList syns={item.meta.syns[0]} ants={item.meta.ants.length ? item.meta.ants[0] : this.state.ants } />
                             </TotalCard>
                         ))}
                        
