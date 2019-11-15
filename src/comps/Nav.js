@@ -22,6 +22,7 @@ export default function Nav(){
             <ul style={styles.ul}>
                 <Link to='/'><li style={styles.li}>Home</li></Link>
                 <Link to='/lookup'><li style={styles.li}>Lookup</li></Link>
+                <Link to='/translate'><li style={styles.li}>Translator</li></Link>
             </ul>
         </nav>
 

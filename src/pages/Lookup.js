@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from '../comps/Button';
 import API from '../utils/API';
 import Stem from '../comps/Stem';
 import TotalCard from '../comps/TotalCard';
 import SynAntList from '../comps/SynAntList';
-import logo from '../img/mwlogo.jpg'
+import ImgMW from '../comps/ImgMW';
+import InForm from '../comps/InForm';
 
 class Lookup extends React.Component {
 
@@ -12,7 +12,6 @@ class Lookup extends React.Component {
         super(props);
         this.state = {
             word: '',
-            def: '',
             data: [],
             ants: ['none found'],
             notFound: false
@@ -26,7 +25,8 @@ class Lookup extends React.Component {
 
             if (typeof (resp.data[0]) === 'string') {
                 this.setState({
-                    notFound: true
+                    notFound: true,
+                    data: []
                 })
             } else {
                 console.log(resp)
@@ -57,31 +57,22 @@ class Lookup extends React.Component {
       
         return (
             <div>
-                <form>
-                    <label className='d-flex align-items-center justify-content-center mb-3'>
-                    <h1 className='pr-2'>Synonym Finder: </h1>
-                        <input
-                            type='text'
-                            value={this.state.value}
-                            name='word'
-                            onChange={this.handleChange} />
-                        <Button onClick={this.handleClick} />
-                    </label>
-                            {this.state.notFound && <small className='form-text text-muted text-uppercase font-weight-bold'>Not Found</small>}
-                    <div className='img-spot'>
-                        <p>Powered By:</p>
-                    <img src={logo} alt='merriam-webster-logo'/>
-                    </div>
-                </form>
-                    <div className='container'>
-                        {this.state.data.map(item => (
-                            <TotalCard word={item.hwi.hw} part={item.fl} short={item.shortdef} key={item.meta.uuid}>
-                                <Stem stems={item.meta.stems} />
-                                <SynAntList syns={item.meta.syns[0]} />
-                                <SynAntList ants={item.meta.ants.length ? item.meta.ants[0] : this.state.ants } />
-                            </TotalCard>
-                        ))}
-                    </div>
+                <InForm page={'Synonym Finder: '} 
+                        value={this.state.value}
+                        handleChange={this.handleChange}
+                        handleClick={this.handleClick}
+                    />
+                {this.state.notFound && <small className='form-text text-muted text-uppercase font-weight-bold'>Not Found</small>}
+                <div className='container'>
+                    {this.state.data.map(item => (
+                        <TotalCard word={item.hwi.hw} part={item.fl} short={item.shortdef} key={item.meta.uuid}>
+                            <Stem stems={item.meta.stems} />
+                            <SynAntList syns={item.meta.syns[0]} />
+                            <SynAntList ants={item.meta.ants.length ? item.meta.ants[0] : this.state.ants } />
+                        </TotalCard>
+                    ))}
+                </div>
+                <ImgMW />
             </div>
         )
     }
