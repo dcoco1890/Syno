@@ -37,11 +37,26 @@ input[type="text"]:focus {
   margin: 0;
 }
 .img-spot {
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
+  z-index: 9;
 }
 .img-spot p {
   margin: 0;
   font-size: 1.1rem;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 900;
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+a > li:hover {
+  box-shadow: -10px -10px 50px 4px rgba(0, 0, 0, 0.5) inset;
 }
