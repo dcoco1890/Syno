@@ -14,7 +14,8 @@ class Lookup extends React.Component {
             word: '',
             def: '',
             data: [],
-            ants: ['none found'], 
+            ants: ['none found'],
+            notFound: false
         }
     }
 
@@ -27,21 +28,27 @@ class Lookup extends React.Component {
             if (typeof (resp.data[0]) === 'string') {
 
                 // something for the user here
-                console.log('Word too small, try a longer one')
+                console.log('Word too small, try a longer one');
+                this.setState({
+                    notFound: true
+                })
             } else {
                 console.log(resp)
                 console.log(resp.data[0].meta.syns)
                 this.setState({
+                    notFound: false,
                     data: resp.data,
                     syns: resp.data[0].meta.syns[0],
                     stems: resp.data[0].meta.stems,
                     def: resp.data[0].shortdef[0],
                     
-                   
                 })
             }
         }).catch(err => {
-            console.log(err)
+            console.log(err);
+            this.setState({
+                notFound: true
+            })
         })
     }
 
@@ -69,6 +76,7 @@ class Lookup extends React.Component {
                             onChange={this.handleChange} />
                         <Button onClick={this.handleClick} />
                     </label>
+                            {this.state.notFound && <small className='form-text text-muted text-uppercase font-weight-bold'>Not Found</small>}
                     <div className='img-spot'>
                         <p>Powered By:</p>
                     <img src={logo} alt='merriam-webster-logo'/>
