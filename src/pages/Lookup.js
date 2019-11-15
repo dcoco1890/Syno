@@ -84,12 +84,14 @@ class Lookup extends React.Component {
                 </form>
                     <div className='container'>
                         {this.state.data.map(item => (
-                            <TotalCard word={item.hwi.hw} >
-                                <Stem stems={item.meta.stems} />
-                                <SynAntList syns={item.meta.syns[0]} ants={item.meta.ants.length ? item.meta.ants[0] : this.state.ants } />
+                            <TotalCard word={item.hwi.hw} part={item.fl} key={item.hwi.hw}>
+                                <div className='row'>
+                                    <Stem stems={item.meta.stems} />
+                                    <SynAntList syns={item.meta.syns[0]} />
+                                    <SynAntList ants={item.meta.ants.length ? item.meta.ants[0] : this.state.ants } />
+                                </div>
                             </TotalCard>
                         ))}
-                       
                     </div>
             </div>
         )
