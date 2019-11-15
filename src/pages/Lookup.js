@@ -24,11 +24,7 @@ class Lookup extends React.Component {
 
         API.getSyn(this.state.word).then(resp => {
 
-            // if we only get an array of strings, the word is too small.
             if (typeof (resp.data[0]) === 'string') {
-
-                // something for the user here
-                console.log('Word too small, try a longer one');
                 this.setState({
                     notFound: true
                 })
@@ -37,11 +33,7 @@ class Lookup extends React.Component {
                 console.log(resp.data[0].meta.syns)
                 this.setState({
                     notFound: false,
-                    data: resp.data,
-                    syns: resp.data[0].meta.syns[0],
-                    stems: resp.data[0].meta.stems,
-                    def: resp.data[0].shortdef[0],
-                    
+                    data: resp.data, 
                 })
             }
         }).catch(err => {
@@ -59,7 +51,6 @@ class Lookup extends React.Component {
         this.setState({
             [name]: value,
         });
-
     };
 
     render() {
@@ -67,7 +58,7 @@ class Lookup extends React.Component {
         return (
             <div>
                 <form>
-                    <label className='d-flex align-items-center justify-content-center'>
+                    <label className='d-flex align-items-center justify-content-center mb-3'>
                     <h1 className='pr-2'>Synonym Finder: </h1>
                         <input
                             type='text'
@@ -84,12 +75,10 @@ class Lookup extends React.Component {
                 </form>
                     <div className='container'>
                         {this.state.data.map(item => (
-                            <TotalCard word={item.hwi.hw} part={item.fl} key={item.hwi.hw}>
-                                <div className='row'>
-                                    <Stem stems={item.meta.stems} />
-                                    <SynAntList syns={item.meta.syns[0]} />
-                                    <SynAntList ants={item.meta.ants.length ? item.meta.ants[0] : this.state.ants } />
-                                </div>
+                            <TotalCard word={item.hwi.hw} part={item.fl} short={item.shortdef} key={item.meta.uuid}>
+                                <Stem stems={item.meta.stems} />
+                                <SynAntList syns={item.meta.syns[0]} />
+                                <SynAntList ants={item.meta.ants.length ? item.meta.ants[0] : this.state.ants } />
                             </TotalCard>
                         ))}
                     </div>

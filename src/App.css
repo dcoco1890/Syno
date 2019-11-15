@@ -32,12 +32,17 @@ input[type="text"]:focus {
   border: 2px solid rgba(85, 85, 85, 0.5);
 }
 
-.syn > h4,
-.ant > h4 {
+.syn > h5,
+.ant > h5 {
   margin: 0;
 }
-h5,p{
+div.card-header > h5, p.font-italic{
   display: inline
+}
+.card{
+  margin: 0 auto;
+  max-width: 80%;
+  margin-bottom: .5rem;
 }
 .img-spot {
   position: fixed;
@@ -49,7 +54,11 @@ h5,p{
   margin: 0;
   font-size: 1.1rem;
 }
-.card-header{
+.col-md-4 > p {
+  text-align: left;
+  margin-bottom: 0
+}
+.card-header, .card-body{
   padding: .25rem .55rem;
 }
 a {
@@ -64,5 +73,9 @@ a:hover {
 }
 a > li:hover {
   box-shadow: -10px -10px 50px 4px rgba(0, 0, 0, 0.5) inset;
+}
+
+li.list-group-item{
+  padding: 0;
 }
 
