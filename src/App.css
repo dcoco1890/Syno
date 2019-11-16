@@ -55,10 +55,14 @@ p.font-italic {
   margin: 0;
   font-size: 1.1rem;
 }
+p {
+  font-family: "Rubik", sans-serif;
+}
 .col-md-4 > p {
   text-align: left;
   margin-bottom: 0;
-  font-family: 
+  font-family: "Rubik", sans-serif;
+
 }
 .card-header,
 .card-body {
@@ -66,8 +70,13 @@ p.font-italic {
 }
 a {
   text-decoration: none;
-  font-weight: 900;
+
+  font-weight: 400;
   color: #fff;
+  font-family: "Rubik", sans-serif;
+}
+h1 {
+  font-family: "Quicksand", sans-serif;
 }
 
 a:hover {
