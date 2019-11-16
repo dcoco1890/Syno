@@ -2,7 +2,7 @@
   "name": "the-best",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dcoco1890.github.io/Syno/",
+  "homepage": "https://dcoco1890.github.io/Syno",
   "dependencies": {
     "axios": "^0.19.0",
     "dotenv": "^8.2.0",
