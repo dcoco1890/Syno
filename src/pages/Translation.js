@@ -1,6 +1,6 @@
 import React from 'react';
 import InForm from '../comps/InForm';
-import API from '../utils/API';
+// import API from '../utils/API';
 import ImgMW from '../comps/ImgMW';
 
 
@@ -18,6 +18,9 @@ class Translation extends React.Component{
     handleClick = e => {
         //click stuff for translations
         e.preventDefault();
+        this.setState({
+            notFound: true
+        })
     }
 
     // input stuff
@@ -39,6 +42,7 @@ class Translation extends React.Component{
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
                 />
+                {this.state.notFound && <small className='form-text text-muted text-uppercase font-weight-bold'>Work in progress, Check back soon!</small>}
             <ImgMW />
         </div>)
     }
